@@ -1,7 +1,7 @@
 package cz.czechitas.ukol3;
 
 public class Pocitac {
-    public Boolean jeZapnuty;
+    private Boolean jeZapnuty;
     private Procesor cpu;
     private Pamet ram;
     private Disk pevnyDisk;
