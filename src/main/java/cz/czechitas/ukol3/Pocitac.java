@@ -1,7 +1,7 @@
 package cz.czechitas.ukol3;
 
 public class Pocitac {
-    private Boolean jeZapnuty;
+    private Boolean jeZapnuty = false;
     private Procesor cpu;
     private Pamet ram;
     private Disk pevnyDisk;
@@ -37,17 +37,39 @@ public class Pocitac {
     }
 
     //metody
+    //metoda jeZapnuty printem vypíše true/false, mělo by být ok
     public boolean jeZapnuty() {
-        return jeZapnuty;
+        return this.jeZapnuty;
     }
-    public boolean zapniSe() {
-        if (jeZapnuty) {
-            System.err.println("Počítač už je zapnutý.");
+
+    //implementace metody zapniSe - otestováno, že by mělo fungovat a při druhém zapnutí vypíše chybovou hlášku
+    public void zapniSe() {
+        if (cpu == null) {
+            System.err.println("Počítač nelze zapnout bez procesoru.");
+            return;
         }
-        return true;
+        if (ram == null) {
+            System.err.println("Počítač nelze zapnout bez paměti.");
+            return;
+        }
+        if (pevnyDisk == null) {
+            System.err.println("Počítač nelze zapnout bez disku.");
+            return;
+        }
+        if (!jeZapnuty) {
+            jeZapnuty = true;
+            System.out.println("Počítač se zapnul.");
+        } else {
+            System.err.println("Počítač nejde zapnout podruhé.");
+        }
     }
-    public boolean vypniSe() {
-        return false;
+    public void vypniSe() {
+        if (jeZapnuty) {
+            jeZapnuty = false;
+            System.out.println("Počítač se vypnul.");
+        } else {
+            return;
+        }
     }
 }
 

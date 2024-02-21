@@ -10,7 +10,11 @@ public class HlavniProgram {
         System.out.println("Program spuštěn.");
         Pocitac misinPocitac = new Pocitac();
         System.out.println(misinPocitac.toString());
-        //misinPocitac.zapniSe();
+
+        System.out.println(misinPocitac.jeZapnuty()); //kontrola
+        misinPocitac.zapniSe();
+        System.out.println(misinPocitac.jeZapnuty()); //kontrola
+
     }
 
 }
