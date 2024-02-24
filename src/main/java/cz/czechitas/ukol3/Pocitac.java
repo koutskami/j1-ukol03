@@ -108,24 +108,27 @@ public class Pocitac {
             System.err.println("Soubor je moc velký. Před vložením udělejte místo na disku.");
         }else druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + velikost);
     }
-    //TODO upravit vymazSouboryOVelikosti(long velikost) o druhy disk
+
     //Metoda vymazSouboryOVelikosti(long velikost) sníží proměnnou vyuziteMisto o velikost.
     //vyuziteMisto nemůže klesnout pod 0.
     //Metoda bude fungovat pouze, pokud je počítač zapnutý.
+    //Metoda upravena o druhý disk, z něhož se maže nejdříve.
     public void vymazSouboryOVelikosti(long velikost) {
         if (!jeZapnuty){
             System.err.println("Nelze smazat soubor. Počítač je vypnutý.");
             return;
         }
-        if (pevnyDisk.getVyuziteMisto() == null) {
-            System.err.println("Soubor nelze smazat, disk je prázdný.");
+        if (druhyDisk.getVyuziteMisto() == null) {
+            if (pevnyDisk.getVyuziteMisto()==null) {
+                System.err.println("Soubor nelze smazat, disk je prázdný.");
+            }
             return;
         }
-        if (pevnyDisk.getVyuziteMisto() < velikost) {
-            System.err.println("Požadovaná velikost přesahuje využité místo na disku.");
-            return;
-        }
-        pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - velikost);
+        if (druhyDisk.getVyuziteMisto() >= velikost) {
+            druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() - velikost);
+        }else if (pevnyDisk.getVyuziteMisto() >= velikost) {
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - velikost);
+        }else System.err.println("Soubor nelze smazat. Požadovaná velikost přesahuje využité místo na disku.");
     }
 
     @Override

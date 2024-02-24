@@ -43,7 +43,7 @@ public class HlavniProgram {
 
         misinPocitac.vypniSe();      // Nevypíše chybu, ale nic neprovede, protože počítač už je vypnutý
 
-        //CAST 2
+        //CAST 2 + 3
 
         //testování metody pro vložení souboru
         //nelze vložit, když je vypnuto
@@ -76,26 +76,26 @@ public class HlavniProgram {
         System.out.println(misinPocitac.toString());
 
 
-//        //testování metody pro mazání souborů
-//        //nelze mazat, když je vypnuto
-//        misinPocitac.vypniSe();
-//        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
-//        System.out.println(misinPocitac.toString());
-//        //nelze vložit větší soubor než je využité místo
-//        misinPocitac.zapniSe();
-//        misinPocitac.vymazSouboryOVelikosti(50_507_945_984L);
-//        System.out.println(misinPocitac.toString());
-//        //mazání
-//        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
-//        System.out.println(misinPocitac.toString());
-//        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
-//        System.out.println(misinPocitac.toString());
-//        //opakování mazání většího souboru než je využité místo
-//        misinPocitac.vymazSouboryOVelikosti(30_507_945_984L);
-//        System.out.println(misinPocitac.toString());
-
-        //CAST 3
-
+        //testování metody pro mazání souborů
+        //nelze mazat, když je vypnuto
+        misinPocitac.vypniSe();
+        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //nelze vložit větší soubor než je využité místo
+        misinPocitac.zapniSe();
+        misinPocitac.vymazSouboryOVelikosti(800_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //mazání
+        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //mažu druhý disk
+        misinPocitac.vymazSouboryOVelikosti(530507945984L);
+        System.out.println(misinPocitac.toString());
+        //mažu část prvního disku
+        misinPocitac.vymazSouboryOVelikosti(30_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //mažu velikost převyšující využitou kapacitu prvního disku
+        misinPocitac.vymazSouboryOVelikosti(530_507_945_984L);
+        System.out.println(misinPocitac.toString());
     }
-
 }
