@@ -43,8 +43,16 @@ public class HlavniProgram {
 
         //2.CAST
         // Demonstrujte v main(...), že se metody vytvorSouborOVelikosti(long velikost) a vymazSouboryOVelikosti(long velikost) chovají, jak mají.
-        //misinPocitac.zapniSe();
-        misinPocitac.vytvorSouborOVelikosti(511_507_945_984L);
+        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+
+        //testování metody pro vložení souboru
+        misinPocitac.zapniSe();
+        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        misinPocitac.vytvorSouborOVelikosti(500_507_945_984L);
         System.out.println(misinPocitac.toString());
     }
 

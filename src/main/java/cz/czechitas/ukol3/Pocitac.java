@@ -62,8 +62,6 @@ public class Pocitac {
         if (jeZapnuty) {
             jeZapnuty = false;
             System.out.println("Počítač se vypnul.");
-        } else {
-            return;
         }
     }
 
@@ -84,11 +82,18 @@ public class Pocitac {
             System.err.println("Nelze vytvořit soubor. Počítač je vypnutý.");
             return;
         }
-//        if (pevnyDisk.getKapacita() > velikost){
-//            System.err.println("Na disku není pro tento soubor dost místa.");
-//            return;
-//        }
-        pevnyDisk.setVyuziteMisto(velikost);
+        if (velikost > pevnyDisk.getKapacita()){
+            System.err.println("Na disku není pro tento soubor dost místa.");
+            return;
+        }
+        if (pevnyDisk.getVyuziteMisto() == null) {
+            pevnyDisk.setVyuziteMisto(velikost);
+        }
+        if (pevnyDisk.getVyuziteMisto() + velikost > pevnyDisk.getKapacita()) {
+            System.err.println("Disk je plný. Před vložením souboru udělejte místo na disku.");
+        }else {
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
+        }
     }
 
     //TODO Metoda vymazSouboryOVelikosti(long velikost) sníží proměnnou vyuziteMisto o velikost.
