@@ -76,5 +76,25 @@ public class Pocitac {
                 ", pevnyDisk=" + pevnyDisk +
                 '}';
     }
+    //TODO Metoda vytvorSouborOVelikosti(long velikost) zvýší proměnnou vyuziteMisto o velikost.
+    //TODO Pokud by se už nově vytvářený soubor na disk nevešel (vyuziteMisto > kapacita), metoda vypíše chybu a vyuziteMisto se nebude měnit.
+    //TODO Metoda bude fungovat pouze, pokud je počítač zapnutý.
+    public void vytvorSouborOVelikosti(long velikost) {
+        if (!jeZapnuty){
+            System.err.println("Nelze vytvořit soubor. Počítač je vypnutý.");
+            return;
+        }
+//        if (pevnyDisk.getKapacita() > velikost){
+//            System.err.println("Na disku není pro tento soubor dost místa.");
+//            return;
+//        }
+        pevnyDisk.setVyuziteMisto(velikost);
+    }
+
+    //TODO Metoda vymazSouboryOVelikosti(long velikost) sníží proměnnou vyuziteMisto o velikost.
+    //TODO vyuziteMisto nemůže klesnout pod 0.
+    //TODO Metoda bude fungovat pouze, pokud je počítač zapnutý.
+    //TODO public void vymazSouboryOVelikosti(long velikost) {}
+
 }
 

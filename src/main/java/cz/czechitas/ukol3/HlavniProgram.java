@@ -40,6 +40,12 @@ public class HlavniProgram {
         misinPocitac.vypniSe();
 
         misinPocitac.vypniSe();      // Nevypíše chybu, ale nic neprovede, protože počítač už je vypnutý
+
+        //2.CAST
+        // Demonstrujte v main(...), že se metody vytvorSouborOVelikosti(long velikost) a vymazSouboryOVelikosti(long velikost) chovají, jak mají.
+        //misinPocitac.zapniSe();
+        misinPocitac.vytvorSouborOVelikosti(511_507_945_984L);
+        System.out.println(misinPocitac.toString());
     }
 
 }
