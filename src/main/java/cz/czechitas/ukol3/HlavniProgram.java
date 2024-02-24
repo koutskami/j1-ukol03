@@ -6,7 +6,6 @@ package cz.czechitas.ukol3;
 public class HlavniProgram {
 
     public static void main(String... args) {
-        //TODO tady bude váš kód - vytvoření instance třídy Pocitac, zapnutí, vpynutí, výpis hodnot.
         //CAST 1
         System.out.println("Program spuštěn.");
         Pocitac misinPocitac = new Pocitac();
@@ -41,7 +40,7 @@ public class HlavniProgram {
 
         misinPocitac.vypniSe();      // Nevypíše chybu, ale nic neprovede, protože počítač už je vypnutý
 
-        //2.CAST
+        //CAST 2
 
         //testování metody pro vložení souboru
         //nelze vložit, když je vypnuto
