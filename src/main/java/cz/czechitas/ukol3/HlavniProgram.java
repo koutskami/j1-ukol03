@@ -26,10 +26,13 @@ public class HlavniProgram {
 
         Disk misinDisk = new Disk();
         misinDisk.setKapacita(510_507_945_984L);
+        Disk misinDisk2 = new Disk();
+        misinDisk2.setKapacita(550_507_945_984L);
 
         misinPocitac.setCpu(misinProcesor);
         misinPocitac.setRam(misinaPamet);
         misinPocitac.setPevnyDisk(misinDisk);
+        misinPocitac.setDruhyDisk(misinDisk2);
 
         System.out.println(misinPocitac.toString());
 
@@ -46,11 +49,14 @@ public class HlavniProgram {
         //nelze vložit, když je vypnuto
         misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
         System.out.println(misinPocitac.toString());
-        //nelze vložit soubor přesahující kapacitu
+        //nelze vložit soubor přesahující kapacitu prvniho i druheho disku
         misinPocitac.zapniSe();
-        misinPocitac.vytvorSouborOVelikosti(600_507_945_984L);
+        misinPocitac.vytvorSouborOVelikosti(630_507_945_984L);
         System.out.println(misinPocitac.toString());
-        //vložení souboru
+        //přesahuje první disk, ale do druhého se vleze
+        misinPocitac.vytvorSouborOVelikosti(530_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //malý soubor vložím do prvního disku
         misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
         System.out.println(misinPocitac.toString());
         //soubory se sčítají
@@ -59,25 +65,37 @@ public class HlavniProgram {
         //do využitého prostoru nelze vložit soubor, kvůli kterému by byla přesáhnuta kapacita
         misinPocitac.vytvorSouborOVelikosti(500_507_945_984L);
         System.out.println(misinPocitac.toString());
+        //chci zaplnit prvni disk
+        misinPocitac.vytvorSouborOVelikosti(480_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //kontrola, že se to přidá do druhého
+        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //máme plno
+        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
 
 
-        //testování metody pro mazání souborů
-        //nelze mazat, když je vypnuto
-        misinPocitac.vypniSe();
-        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
-        System.out.println(misinPocitac.toString());
-        //nelze vložit větší soubor než je využité místo
-        misinPocitac.zapniSe();
-        misinPocitac.vymazSouboryOVelikosti(50_507_945_984L);
-        System.out.println(misinPocitac.toString());
-        //mazání
-        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
-        System.out.println(misinPocitac.toString());
-        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
-        System.out.println(misinPocitac.toString());
-        //opakování mazání většího souboru než je využité místo
-        misinPocitac.vymazSouboryOVelikosti(30_507_945_984L);
-        System.out.println(misinPocitac.toString());
+//        //testování metody pro mazání souborů
+//        //nelze mazat, když je vypnuto
+//        misinPocitac.vypniSe();
+//        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+//        System.out.println(misinPocitac.toString());
+//        //nelze vložit větší soubor než je využité místo
+//        misinPocitac.zapniSe();
+//        misinPocitac.vymazSouboryOVelikosti(50_507_945_984L);
+//        System.out.println(misinPocitac.toString());
+//        //mazání
+//        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+//        System.out.println(misinPocitac.toString());
+//        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+//        System.out.println(misinPocitac.toString());
+//        //opakování mazání většího souboru než je využité místo
+//        misinPocitac.vymazSouboryOVelikosti(30_507_945_984L);
+//        System.out.println(misinPocitac.toString());
+
+        //CAST 3
+
     }
 
 }

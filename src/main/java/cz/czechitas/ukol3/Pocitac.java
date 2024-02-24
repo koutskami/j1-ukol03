@@ -5,6 +5,7 @@ public class Pocitac {
     private Procesor cpu;
     private Pamet ram;
     private Disk pevnyDisk;
+    private Disk druhyDisk;
 
     //gettery a settery:
     public Procesor getCpu() {
@@ -29,6 +30,14 @@ public class Pocitac {
 
     public void setPevnyDisk(Disk pevnyDisk) {
         this.pevnyDisk = pevnyDisk;
+    }
+
+    public Disk getDruhyDisk() {
+        return druhyDisk;
+    }
+
+    public void setDruhyDisk(Disk druhyDisk) {
+        this.druhyDisk = druhyDisk;
     }
 
     //metody
@@ -65,38 +74,41 @@ public class Pocitac {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Pocitac{" +
-                "jeZapnuty=" + jeZapnuty +
-                ", cpu=" + cpu +
-                ", ram=" + ram +
-                ", pevnyDisk=" + pevnyDisk +
-                '}';
-    }
-
     //Metoda vytvorSouborOVelikosti(long velikost) zvýší proměnnou vyuziteMisto o velikost.
     //Pokud by se už nově vytvářený soubor na disk nevešel (vyuziteMisto > kapacita), metoda vypíše chybu a vyuziteMisto se nebude měnit.
     //Metoda bude fungovat pouze, pokud je počítač zapnutý.
     public void vytvorSouborOVelikosti(long velikost) {
+        //pokud je vyuzite misto null, tak chci pracovat s nulou, at mi nepada build
+        if (pevnyDisk.getVyuziteMisto()==null) {
+            pevnyDisk.setVyuziteMisto(0L);
+        }
+        if (druhyDisk.getVyuziteMisto()==null) {
+            druhyDisk.setVyuziteMisto(0L);
+        }
+
+        //krok1: kontroluje zda je pc zapnutý, pokud je vypnutý tak vypíše chybu a nepokračuje
         if (!jeZapnuty){
             System.err.println("Nelze vytvořit soubor. Počítač je vypnutý.");
             return;
         }
-        if (velikost > pevnyDisk.getKapacita()){
-            System.err.println("Na disku není pro tento soubor dost místa.");
-            return;
-        }
-        if (pevnyDisk.getVyuziteMisto() == null) {
-            pevnyDisk.setVyuziteMisto(velikost);
-        }
-        if (pevnyDisk.getVyuziteMisto() + velikost > pevnyDisk.getKapacita()) {
-            System.err.println("Soubor je moc velký. Před vložením udělejte místo na disku.");
-        }else {
-            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
-        }
-    }
 
+        //krok2: kontroluje zda je soubor větší než kapacita prvního a druhého disku, pokud ano tak vypíše hlášku a končí
+        if (velikost > pevnyDisk.getKapacita()){
+//            System.err.println("Na disku není pro tento soubor dost místa.");
+//            return;
+            if (velikost > druhyDisk.getKapacita()) {
+                System.err.println("Na disku není pro tento soubor dost místa.");
+            }
+        }
+
+        //krok3: je potřeba zkontrolovat, že součet velikosti a využitého místa nepřesahuje kapacitu
+        if (pevnyDisk.getVyuziteMisto() + velikost < pevnyDisk.getKapacita()){
+            pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() + velikost);
+        }else if (druhyDisk.getVyuziteMisto() + velikost > druhyDisk.getKapacita()) {
+            System.err.println("Soubor je moc velký. Před vložením udělejte místo na disku.");
+        }else druhyDisk.setVyuziteMisto(druhyDisk.getVyuziteMisto() + velikost);
+    }
+    //TODO upravit vymazSouboryOVelikosti(long velikost) o druhy disk
     //Metoda vymazSouboryOVelikosti(long velikost) sníží proměnnou vyuziteMisto o velikost.
     //vyuziteMisto nemůže klesnout pod 0.
     //Metoda bude fungovat pouze, pokud je počítač zapnutý.
@@ -114,6 +126,17 @@ public class Pocitac {
             return;
         }
         pevnyDisk.setVyuziteMisto(pevnyDisk.getVyuziteMisto() - velikost);
+    }
+
+    @Override
+    public String toString() {
+        return "Pocitac{" +
+                "jeZapnuty=" + jeZapnuty +
+                ", cpu=" + cpu +
+                ", ram=" + ram +
+                ", pevnyDisk=" + pevnyDisk +
+                ", druhyDisk=" + druhyDisk +
+                '}';
     }
 }
 
