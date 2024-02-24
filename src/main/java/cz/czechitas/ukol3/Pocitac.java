@@ -6,11 +6,6 @@ public class Pocitac {
     private Pamet ram;
     private Disk pevnyDisk;
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     //gettery a settery:
     public Procesor getCpu() {
         return cpu;
@@ -70,6 +65,16 @@ public class Pocitac {
         } else {
             return;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Pocitac{" +
+                "jeZapnuty=" + jeZapnuty +
+                ", cpu=" + cpu +
+                ", ram=" + ram +
+                ", pevnyDisk=" + pevnyDisk +
+                '}';
     }
 }
 

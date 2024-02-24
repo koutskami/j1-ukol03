@@ -24,6 +24,9 @@ public class Procesor {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Procesor{" +
+                "vyrobce='" + vyrobce + '\'' +
+                ", rychlost=" + rychlost +
+                '}';
     }
 }

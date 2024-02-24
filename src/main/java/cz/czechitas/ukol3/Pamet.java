@@ -14,6 +14,8 @@ public class Pamet {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Pamet{" +
+                "kapacita=" + kapacita +
+                '}';
     }
 }
