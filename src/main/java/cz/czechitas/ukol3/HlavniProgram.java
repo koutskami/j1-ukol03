@@ -42,17 +42,42 @@ public class HlavniProgram {
         misinPocitac.vypniSe();      // Nevypíše chybu, ale nic neprovede, protože počítač už je vypnutý
 
         //2.CAST
-        // Demonstrujte v main(...), že se metody vytvorSouborOVelikosti(long velikost) a vymazSouboryOVelikosti(long velikost) chovají, jak mají.
-        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
-        System.out.println(misinPocitac.toString());
 
         //testování metody pro vložení souboru
+        //nelze vložit, když je vypnuto
+        misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //nelze vložit soubor přesahující kapacitu
         misinPocitac.zapniSe();
+        misinPocitac.vytvorSouborOVelikosti(600_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //vložení souboru
         misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
         System.out.println(misinPocitac.toString());
+        //soubory se sčítají
         misinPocitac.vytvorSouborOVelikosti(11_507_945_984L);
         System.out.println(misinPocitac.toString());
+        //do využitého prostoru nelze vložit soubor, kvůli kterému by byla přesáhnuta kapacita
         misinPocitac.vytvorSouborOVelikosti(500_507_945_984L);
+        System.out.println(misinPocitac.toString());
+
+
+        //testování metody pro mazání souborů
+        //nelze mazat, když je vypnuto
+        misinPocitac.vypniSe();
+        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //nelze vložit větší soubor než je využité místo
+        misinPocitac.zapniSe();
+        misinPocitac.vymazSouboryOVelikosti(50_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //mazání
+        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        misinPocitac.vymazSouboryOVelikosti(11_507_945_984L);
+        System.out.println(misinPocitac.toString());
+        //opakování mazání většího souboru než je využité místo
+        misinPocitac.vymazSouboryOVelikosti(30_507_945_984L);
         System.out.println(misinPocitac.toString());
     }
 
